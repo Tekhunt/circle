@@ -62,7 +62,7 @@ async def get_user(user_id: int, db: Session = Depends(get_db)):
 async def update_user(user_id: int, user: User, db: Session = Depends(get_db)):
     user_table = db.query(UserTable).filter_by(id=user_id).first()
     if not user_table:
-        raise HTTPException(status_code=404, detail="User not found")
+        raise HTTPException(status_code=404, detail="User with id not found")
     user_table.email = user.email
     user_table.password = user.password
     user_table.name = user.name
@@ -79,4 +79,4 @@ async def delete_user(user_id: int, db: Session = Depends(get_db)):
         db.commit()
         return {"message": "User deleted successfully"}
     else:
-        return HTTPException(status_code=400, detail="User not found")
+        return HTTPException(status_code=400, detail="User with id not found")

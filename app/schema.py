@@ -8,8 +8,8 @@ class User(BaseModel):
     password: str
     name: str
     is_provider: bool
-    is_client = bool
-    is_admin = bool
+    is_client: bool = False
+    is_admin: bool = False
 
     class Config:
         orm_mode = True
@@ -23,6 +23,7 @@ class User(BaseModel):
                 "is_admin": False,
             }
         }
+
 
 
 class UserLogin(BaseModel):

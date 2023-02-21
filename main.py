@@ -19,8 +19,7 @@ def check_user(user: UserLogin, db):
 
 @app.get("/")
 async def home():
-    return "Welcome: Circle is a new app that allows users to connect with service providers in their area. Service providers can register and post their business, making it easy for people to find and contact them."
-
+    return "Welcome to Circle"
 
 @app.post("/register")
 async def register(user: User, db: Session = Depends(get_db)):
